@@ -23,7 +23,6 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-            
             'auth' => array(
                 'type'    => 'segment',
                 'options' => array(
@@ -37,17 +36,6 @@ return array(
                     ),
                 ),
             ),
-            
-        'login' => array(
-            'type'    => 'Literal',
-            'options' => array(
-                'route'    => '/login',
-                'defaults' => array(
-                    'controller' => 'Auth\Controller\Auth',
-                        'action'     => 'login',
-                ),
-            ),
-        ),
         ),
     ),
 );
