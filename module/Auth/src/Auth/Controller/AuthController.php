@@ -59,7 +59,7 @@ class AuthController extends AbstractActionController
                     $this->flashMessenger()->addMessage(array('error' => 'invalid credentials.'));
                     // Redirect to page after login failure
                 }
-                return $this->redirect()->tourl('/ZendSkeletonApplication/public/device');
+                return $this->redirect()->tourl('/article_to_read/public/device');
                 // Logic for login authentication
             }else{
                 $errors = $loginForm->getMessages();
@@ -75,7 +75,7 @@ class AuthController extends AbstractActionController
         $session = new Container('User');
         $session->getManager()->destroy();
         $this->getAuthService()->clearIdentity();
-        return $this->redirect()->toUrl('/ZendSkeletonApplication/public');
+        return $this->redirect()->toUrl('/auth');
     }
 
     public function signupAction(){
@@ -98,7 +98,7 @@ class AuthController extends AbstractActionController
 
                 $user->exchangeArray($signUpForm->getData());
                 $user->password = $encyptPass;
-                //Debug::dump($user);
+                
 
                 $this->getUserTable()->saveUser($user);
 
@@ -119,7 +119,7 @@ class AuthController extends AbstractActionController
                     $this->flashMessenger()->addMessage(array('error' => 'invalid credentials.'));
                     // Redirect to page after login failure
                 }
-                return $this->redirect()->tourl('/ZendSkeletonApplication/public/device');
+                return $this->redirect()->tourl('/article_to_read/public/device');
                 // Logic for login authentication
             }else{
                 $errors = $signUpForm->getMessages();
