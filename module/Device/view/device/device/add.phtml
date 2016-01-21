@@ -1,5 +1,7 @@
  <?php
- 
+ use Zend\Session\Container;
+
+$session = new Container('User');
 
  $title = 'Add new device';
  $this->headTitle($title);
@@ -15,6 +17,6 @@
  echo $this->formRow($form->get('theme')); 
  echo $this->formRow($form->get('lien'));
  echo $this->formRow($form->get('journal'));
-  echo $this->formRow($form->get('user_id'));
+ echo $this->formHidden($session->user_id);
  echo $this->formSubmit($form->get('submit'));
  echo $this->form()->closeTag();

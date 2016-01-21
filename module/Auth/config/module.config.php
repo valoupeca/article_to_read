@@ -37,10 +37,23 @@ return array(
                     ),
                 ),
             ),
+            'logout' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/logout',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Auth\Controller\Auth',
+                        'action'     => 'logout',
+                    ),
+                ),
+            ),
             'signup' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/auth/signup[/:action]',
+                    'route'    => '/auth/signup',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),

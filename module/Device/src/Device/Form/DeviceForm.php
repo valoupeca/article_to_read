@@ -50,7 +50,7 @@ namespace Device\Form;
          ));
              $this->add(array(
              'name' => 'user_id',
-             'type' => 'Hidden',
+             'type' => 'Number',
              
          ));
          $this->add(array(

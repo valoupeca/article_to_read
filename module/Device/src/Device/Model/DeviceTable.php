@@ -24,12 +24,7 @@ namespace Device\Model;
          $resultSet = $this->tableGateway->select();
          return $resultSet;
      }
-      public function fetchDeviceUser($id)
-     {
-         $resultSet = $this->tableGateway->select(array('id' => $id));
-         return $resultSet;
-     }
-
+     
      public function getDevice($id)
      {
          $id  = (int) $id;

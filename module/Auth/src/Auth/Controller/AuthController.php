@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: Ilias
- * Date: 05/12/2015
- * Time: 13:41
- */
+
 
 namespace Auth\Controller;
 
@@ -75,7 +70,7 @@ class AuthController extends AbstractActionController
         $session = new Container('User');
         $session->getManager()->destroy();
         $this->getAuthService()->clearIdentity();
-        return $this->redirect()->toUrl('/auth');
+        return $this->redirect()->toUrl('/article_to_read/public');
     }
 
     public function signupAction(){
