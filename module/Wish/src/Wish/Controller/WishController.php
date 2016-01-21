@@ -64,7 +64,7 @@ class WishController extends AbstractActionController
     public function addWishAction()
     {
         $form = new WishForm();
-        $form->get('submit')->setValue('AddWish');
+        $form->get('submit')->setValue('Add');
 
         $request = $this->getRequest();
         if ($request->isPost()) {

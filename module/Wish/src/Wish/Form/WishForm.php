@@ -30,7 +30,7 @@ class WishForm extends Form
         ));
         $this->add(array(
             'name' => 'titre',
-            'type' => 'titre',
+            'type' => 'Text',
             'options' => array(
                 'label' => 'Titre',
             ),
