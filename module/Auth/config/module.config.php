@@ -21,6 +21,7 @@ return array(
     'service_manager' => array(
 
     ),
+    
     'router' => array(
         'routes' => array(
             'auth' => array(
@@ -36,6 +37,21 @@ return array(
                     ),
                 ),
             ),
+            'signup' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/auth/signup[/:action]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Auth\Controller\Auth',
+                        'action'     => 'signup',
+                    ),
+                ),
+            ),
         ),
     ),
+   
+        
 );
