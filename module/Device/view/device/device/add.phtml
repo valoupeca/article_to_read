@@ -11,9 +11,10 @@
 
  echo $this->form()->openTag($form);
  echo $this->formHidden($form->get('id'));
- echo $this->formRow($form->get('nom_produit'));
- echo $this->formRow($form->get('type')); 
- echo $this->formRow($form->get('en_marche'));
- echo $this->formRow($form->get('image'));
+ echo $this->formRow($form->get('titre'));
+ echo $this->formRow($form->get('theme')); 
+ echo $this->formRow($form->get('lien'));
+ echo $this->formRow($form->get('journal'));
+  echo $this->formRow($form->get('user_id'));
  echo $this->formSubmit($form->get('submit'));
  echo $this->form()->closeTag();
