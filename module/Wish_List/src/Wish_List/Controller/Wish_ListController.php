@@ -10,8 +10,8 @@ namespace Wish_List\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Wish_List\Model\Wish_List;
-use Wish_List\Form\Wish_ListForm;
+use WishList\Model\Wish_List;
+use WishList\Form\Wish_ListForm;
 
 class Wish_ListController extends AbstractActionController
 {
@@ -20,9 +20,8 @@ class Wish_ListController extends AbstractActionController
     public function indexAction()
     {
 
-
         return new ViewModel(array(
-            'wishlists' => $this->getWishListTable()->fetchAll(),
+            'wish_lists' => $this->getWishListTable()->fetchAll(),
         ));
     }
 
