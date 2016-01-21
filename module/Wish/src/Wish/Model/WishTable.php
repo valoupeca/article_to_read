@@ -3,14 +3,15 @@
  * Created by PhpStorm.
  * User: lamur
  * Date: 21/01/2016
- * Time: 18:10
+ * Time: 19:24
  */
 
-namespace WishList\Model;
+
+namespace Wish\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 
-class WishListTable
+class WishTable
 {
     protected $tableGateway;
 
@@ -25,7 +26,7 @@ class WishListTable
         return $resultSet;
     }
 
-    public function getWish_List($id)
+    public function getWish($id)
     {
         $id  = (int) $id;
         $rowset = $this->tableGateway->select(array('user_id' => $id));
@@ -37,8 +38,29 @@ class WishListTable
     }
 
 
-    public function deleteWish_List($id)
+    public function deleteWish($id)
     {
         $this->tableGateway->delete(array('id' => (int) $id));
+    }
+
+    public function saveWish(Device $device,$iduser)
+    {
+        $data = array(
+            'titre' => $device->titre,
+            'lien' => $device->lien,
+            'user_id' => $iduser,
+
+        );
+
+        $id = (int) $device->id;
+        if ($id == 0) {
+            $this->tableGateway->insert($data);
+        } else {
+            if ($this->getDevice($id)) {
+                $this->tableGateway->update($data, array('id' => $id));
+            } else {
+                throw new \Exception('Device id does not exist');
+            }
+        }
     }
 }

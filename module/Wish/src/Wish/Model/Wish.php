@@ -3,17 +3,17 @@
  * Created by PhpStorm.
  * User: lamur
  * Date: 21/01/2016
- * Time: 18:10
+ * Time: 19:23
  */
 
-namespace WishList\Model;
+namespace Wish\Model;
 
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 
 
-class WishList
+class Wish
 {
     public $id;
     public $titre;

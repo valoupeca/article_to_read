@@ -27,13 +27,13 @@ $this->headTitle($title);
 
             <th>&nbsp;</th>
         </tr>
-        <?php foreach ($wish_lists as $wishlist) : ?>
+        <?php foreach ($wishs as $wish) : ?>
             <tr>
-                <td><?php echo $this->escapeHtml($wishlist->id);?></td>
-                <td><?php echo $this->escapeHtml($wishlist->titre);?></td>
-                <td><?php echo $this->escapeHtml($wishlist->lien);?></td>
-                <td><a href="<?php echo $this->url('wish_list',
-                        array('action'=>'delete', 'id' => $wishlist->id));?>">Delete</a></td>
+                <td><?php echo $this->escapeHtml($wish->id);?></td>
+                <td><?php echo $this->escapeHtml($wish->titre);?></td>
+                <td><?php echo $this->escapeHtml($wish->lien);?></td>
+                <td><a href="<?php echo $this->url('wish',
+                        array('action'=>'delete', 'id' => $wish->id));?>">Delete</a></td>
 
             </tr>
 

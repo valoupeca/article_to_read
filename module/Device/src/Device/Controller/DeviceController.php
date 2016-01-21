@@ -18,12 +18,16 @@ namespace Device\Controller;
      
      public function indexAction()
      {
-        
-        
+
          return new ViewModel(array(
              'devices' => $this->getDeviceTable()->fetchAll(),
          ));
      }
+
+    public function addwish()
+    {
+        $this->getDeviceTable()->getDevice();
+    }
 
      public function addAction()
      {

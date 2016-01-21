@@ -30,15 +30,17 @@ $session = new Container('User');
      <td><?php echo $this->escapeHtml($device->theme);?></td>
      <td><?php echo $this->escapeHtml($device->lien);?></td>
      <td><?php echo $this->escapeHtml($device->journal);?></td>
+     <td><a href="<?php echo $this->url('device',
+             array('action'=>'addwish', 'id' => $device->id));?>">Add me</td>
      <td>
       <?php if($session->email == "admin@admin.fr"){ 
           print $session->is_admin; ?>
           
-     <td> <a href="<?php echo $this->url('device',
+      <a href="<?php echo $this->url('device',
              array('action'=>'edit', 'id' => $device->id));?>">Edit</a>
      
          <a href="<?php echo $this->url('device',
-             array('action'=>'delete', 'id' => $device->id));?>">Delete</a>     
+             array('action'=>'delete', 'id' => $device->id));?>">Delete</a>  </td>
           
       <?php } ?>
      

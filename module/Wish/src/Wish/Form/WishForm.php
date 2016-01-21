@@ -3,19 +3,19 @@
  * Created by PhpStorm.
  * User: lamur
  * Date: 21/01/2016
- * Time: 18:07
+ * Time: 19:23
  */
 
-namespace WishList\Form;
+namespace Wish\Form;
 
 use Zend\Form\Form;
 
-class WishListForm extends Form
+class WishForm extends Form
 {
     public function __construct($name = null)
     {
         // we want to ignore the name passed
-        parent::__construct('wish_list');
+        parent::__construct('wish');
 
         $this->add(array(
             'name' => 'id',
@@ -29,7 +29,7 @@ class WishListForm extends Form
             ),
         ));
         $this->add(array(
-            'name' => 'theme',
+            'name' => 'titre',
             'type' => 'titre',
             'options' => array(
                 'label' => 'Titre',

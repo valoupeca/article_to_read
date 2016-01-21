@@ -3,25 +3,26 @@
  * Created by PhpStorm.
  * User: lamur
  * Date: 21/01/2016
- * Time: 18:04
+ * Time: 19:21
  */
 
-namespace Wish_List\Controller;
+
+namespace Wish\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use WishList\Model\Wish_List;
-use WishList\Form\Wish_ListForm;
+use Wish\Model\Wish;
+use Wish\Form\WishForm;
 
-class Wish_ListController extends AbstractActionController
+class WishController extends AbstractActionController
 {
-    protected $wishlistTable;
+    protected $wishTable;
 
     public function indexAction()
     {
 
         return new ViewModel(array(
-            'wish_lists' => $this->getWishListTable()->fetchAll(),
+            'wishs' => $this->getWishTable()->fetchAll(),
         ));
     }
 
@@ -31,7 +32,7 @@ class Wish_ListController extends AbstractActionController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('wish_list');
+            return $this->redirect()->toRoute('wish');
         }
 
         $request = $this->getRequest();
@@ -40,25 +41,25 @@ class Wish_ListController extends AbstractActionController
 
             if ($del == 'Yes') {
                 $id = (int) $request->getPost('id');
-                $this->getWishListTable()->deleteWishList($id);
+                $this->getWishTable()->deleteWish($id);
             }
 
 
-            return $this->redirect()->toRoute('wish_list');
+            return $this->redirect()->toRoute('wish');
         }
 
         return array(
             'id'    => $id,
-            'wish_list' => $this->getWishListTable()->getWishList($id)
+            'wish' => $this->getWishTable()->getWish($id)
         );
     }
-    public function getWishListTable()
+    public function getWishTable()
     {
-        if (!$this->wishlistTable) {
+        if (!$this->wishTable) {
             $sm = $this->getServiceLocator();
-            $this->wishlistTable = $sm->get('Wish_List\Model\Wish_ListTable');
+            $this->wishTable = $sm->get('Wish\Model\WishTable');
         }
-        return $this->wishlistTable;
+        return $this->wishTable;
     }
 }
 

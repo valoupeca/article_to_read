@@ -3,19 +3,13 @@
  * Created by PhpStorm.
  * User: lamur
  * Date: 21/01/2016
- * Time: 17:56
+ * Time: 19:27
  */
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace Wish;
 
-namespace Wish_List;
-
-use Wish_List\Model\Wish_List;
-use Wish_List\Model\Wish_ListTable;
+use Wish\Model\Wish;
+use Wish\Model\WishTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -41,16 +35,16 @@ class Module
     {
         return array(
             'factories' => array(
-                'Wish_List\Model\Wish_ListTable' =>  function($sm) {
-                    $tableGateway = $sm->get('WishListTableGateway');
-                    $table = new Wish_ListTable($tableGateway);
+                'Wish\Model\WishTable' =>  function($sm) {
+                    $tableGateway = $sm->get('WishTableGateway');
+                    $table = new WishTable($tableGateway);
                     return $table;
                 },
-                'WishListTableGateway' => function ($sm) {
+                'WishTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Wish_List());
-                    return new TableGateway('wish_list', $dbAdapter, null, $resultSetPrototype);
+                    $resultSetPrototype->setArrayObjectPrototype(new Wish());
+                    return new TableGateway('wish', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );
