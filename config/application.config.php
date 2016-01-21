@@ -11,6 +11,7 @@ return array(
         'Application',
         'Auth',
         'Device',
+        'Wish_List',
         
         
     ),

@@ -1,0 +1,44 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: lamur
+ * Date: 21/01/2016
+ * Time: 17:59
+ */
+
+use Zend\Session\Container;
+
+$session = new Container('User');
+
+$title = 'Your paper';
+$this->headTitle($title);
+
+?>
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
+    <p>
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Lien</th>
+            <th>Delete me</th>
+
+            <th>&nbsp;</th>
+        </tr>
+        <?php foreach ($wishlists as $wishlist) : ?>
+            <tr>
+                <td><?php echo $this->escapeHtml($wishlist->id);?></td>
+                <td><?php echo $this->escapeHtml($wishlist->titre);?></td>
+                <td><?php echo $this->escapeHtml($wishlist->lien);?></td>
+                <td><a href="<?php echo $this->url('wish_list',
+                        array('action'=>'delete', 'id' => $wishlist->id));?>">Delete</a></td>
+
+            </tr>
+
+
+        <?php endforeach; ?>
+
+    </table>
+
