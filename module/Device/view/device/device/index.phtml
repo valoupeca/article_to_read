@@ -18,6 +18,10 @@ $session = new Container('User');
      <th>Lien</th>
      <th>Journal</th>
      <th>Add me</th>
+     <?php if($session->email == "admin@admin.fr"){ 
+          print $session->is_admin; ?>
+     <th>Update List</th>
+     <?php } ?>
      <th>&nbsp;</th>
  </tr>
  <?php foreach ($devices as $device) : ?>
@@ -26,7 +30,17 @@ $session = new Container('User');
      <td><?php echo $this->escapeHtml($device->theme);?></td>
      <td><?php echo $this->escapeHtml($device->lien);?></td>
      <td><?php echo $this->escapeHtml($device->journal);?></td>
-      <td><?php  print $session->is_admin;?></td>
+     <td>
+      <?php if($session->email == "admin@admin.fr"){ 
+          print $session->is_admin; ?>
+          
+     <td> <a href="<?php echo $this->url('device',
+             array('action'=>'edit', 'id' => $device->id));?>">Edit</a>
+     
+         <a href="<?php echo $this->url('device',
+             array('action'=>'delete', 'id' => $device->id));?>">Delete</a>     
+          
+      <?php } ?>
      
  </tr>    
        
@@ -35,12 +49,11 @@ $session = new Container('User');
  
  </table>
      
-      <?php if($session->is_admin == '1'){ 
+      <?php if($session->email == "admin@admin.fr"){ 
           print $session->is_admin; ?>
-         <a href="<?php echo $this->url('device',
-             array('action'=>'edit', 'id' => $device->id));?>">Edit</a>
-         <a href="<?php echo $this->url('device',
-             array('action'=>'delete', 'id' => $device->id));?>">Delete</a>
+     
+        
+     
          <a href="<?php echo $this->url('device',
              array('action'=>'add'));?>">Add new device</a>
 
