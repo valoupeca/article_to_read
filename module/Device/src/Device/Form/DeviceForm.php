@@ -14,21 +14,21 @@ namespace Device\Form;
      public function __construct($name = null)
      {
          // we want to ignore the name passed
-         parent::__construct('album');
+         parent::__construct('device');
 
          $this->add(array(
              'name' => 'id',
              'type' => 'Hidden',
          ));
          $this->add(array(
-             'name' => 'thème',
+             'name' => 'titre',
              'type' => 'Text',
              'options' => array(
                  'label' => 'Thème',
              ),
          ));
          $this->add(array(
-             'name' => 'thème',
+             'name' => 'theme',
              'type' => 'Text',
              'options' => array(
                  'label' => 'Thème',
@@ -42,11 +42,16 @@ namespace Device\Form;
              ),
          ));
            $this->add(array(
-             'name' => 'Journal',
+             'name' => 'journal',
              'type' => 'Text',
              'options' => array(
                  'label' => 'Nom du Journal',
              ),
+         ));
+             $this->add(array(
+             'name' => 'user_id',
+             'type' => 'Hidden',
+             
          ));
          $this->add(array(
              'name' => 'submit',
