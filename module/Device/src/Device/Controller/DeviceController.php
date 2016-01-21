@@ -24,10 +24,8 @@ namespace Device\Controller;
          ));
      }
 
-    public function addwish()
-    {
-        $this->getDeviceTable()->getDevice();
-    }
+
+
 
      public function addAction()
      {
@@ -62,8 +60,6 @@ namespace Device\Controller;
              ));
          }
 
-         // Get the Device with the specified id.  An exception is thrown
-         // if it cannot be found, in which case go to the index page.
          try {
              $device = $this->getDeviceTable()->getDevice($id);
          }
@@ -95,6 +91,30 @@ namespace Device\Controller;
              'form' => $form,
          );
      }
+     }
+
+     public function addWishAction()
+     {
+         $form = new DeviceForm();
+         $form->get('submit')->setValue('AddWish');
+
+         $request = $this->getRequest();
+         if ($request->isPost()) {
+             $wish = new Device();
+             $form->setInputFilter($wish->getInputFilter());
+             $form->setData($request->getPost());
+
+             if ($form->isValid()) {
+                 $wish->exchangeArray($form->getData());
+                 $this->getDeviceTable()->saveWish($wish);
+
+                 // Redirect to list of devices
+                 return $this->redirect()->toRoute('wish');
+             }
+         }
+         return array('form' => $form);
+
+
      }
 
      public function deleteAction()

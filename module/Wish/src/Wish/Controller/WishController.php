@@ -61,5 +61,51 @@ class WishController extends AbstractActionController
         }
         return $this->wishTable;
     }
+    public function addWishAction()
+    {
+        $form = new WishForm();
+        $form->get('submit')->setValue('AddWish');
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $wish = new Device();
+            $form->setInputFilter($wish->getInputFilter());
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $wish->exchangeArray($form->getData());
+                $this->getDeviceTable()->saveWish($wish);
+
+                // Redirect to list of devices
+                return $this->redirect()->toRoute('wish');
+            }
+        }
+        return array('form' => $form);
+
+
+    }
+
+    public function saveWish(Wish $wish)
+    {
+        $data = array(
+            'titre' => $wish->titre,
+            'lien' => $wish->lien,
+            'users_id' => $wish->user_id,
+
+        );
+
+        $id = (int) $wish->id;
+        if ($id == 0) {
+            $this->tableGateway->insert($data);
+        } else {
+            if ($this->getWish($id)) {
+                $this->tableGateway->update($data, array('id' => $id));
+            } else {
+                throw new \Exception('Wish id does not exist');
+            }
+        }
+    }
+
+
 }
 
