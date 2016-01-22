@@ -18,3 +18,4 @@ UTILISATION
 RACOURCI
 Tapez : 'php -S 0.0.0.0:8000 -t public public\index.php' dans votre terminale
 Puis , dans la barre de recherche de votre ordinateur , tapez "localhost:8080" pour acceder directement à l'application
+vous devez laisser le terminal actif pendant l'utilisation du site.
