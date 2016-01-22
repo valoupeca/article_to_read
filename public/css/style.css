@@ -6,6 +6,24 @@ body {
 .zf-green {
     color: #68b604;
 }
+.logo
+{
+    background-color: #FFFFFF;
+
+}
+.logotitre
+{
+    left : 10%;
+    position: relative;
+    font-style: normal;
+    font-family: Broadway;
+    color: cornflowerblue;
+}
+.logoimage
+{
+    left : 30%;
+    position: relative;
+}
 
 .btn-success {
   background-color: #57a900;

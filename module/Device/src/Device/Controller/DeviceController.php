@@ -130,52 +130,7 @@ namespace Device\Controller;
          return $this->deviceTable;
      }
 
-     public function getWishTable()
-     {
-         if (!$this->wishTable) {
-             $sm = $this->getServiceLocator();
-             $this->wishTable = $sm->get('Wish\Model\WishTable');
-         }
-         return $this->wishTable;
-     }
 
- public function selectedAction()
- {
-
-
-     $id = (int)$this->params()->fromRoute('id', 0);
-     try {
-         $device = $this->getDeviceTable()->getDevice($id);
-     } catch (\Exception $ex) {
-         return $this->redirect()->toRoute('device', array(
-             'action' => 'index'
-         ));
-     }
-
-     $form = new DeviceForm();
-
-     $form->bind($device);
-     $form->get('submit')->setAttribute('value', 'Add Wish');
-
-     $request = $this->getRequest();
-     if ($request->isPost()) {
-         $form->setInputFilter($device->getInputFilter());
-         $form->setData($request->getPost());
-
-         if ($form->isValid()) {
-             $this->getWishTable()->saveWish($device);
-
-             // Redirect to list of device
-             return $this->redirect()->toRoute('wish');
-         }
-     }
-
-     return array(
-         'id' => $id,
-         'form' => $form,
-     );
-
- }
 
 
  }

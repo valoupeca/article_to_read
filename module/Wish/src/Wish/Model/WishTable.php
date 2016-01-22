@@ -26,6 +26,13 @@ class WishTable
         return $resultSet;
     }
 
+    public function fetchById($id)
+    {
+        $id  = (int) $id;
+        $resultSet = $this->tableGateway->select(array('user_id' => $id));
+        return $resultSet;
+    }
+
     public function getWish($id)
     {
         $id  = (int) $id;
