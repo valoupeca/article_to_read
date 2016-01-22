@@ -4,9 +4,9 @@ use Zend\Session\Container;
 
 
 
-$session = new Container('User'); 
+$session = new Container('User');
 
-echo $this->doctype(); 
+echo $this->doctype();
 ?>
 
 <html lang="en">
@@ -45,30 +45,31 @@ echo $this->doctype();
                     </button>
 
                 </div>
-                <div class="collapse navbar-collapse">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
 
                         <li class="active">
-                            <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" style="height:25px; width=25px;"alt="Zend Framework 2"/>&nbsp;</a>
-                            <a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                            <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/logo.png') ?>" style="height:25px; width=25px;"alt="Zend Framework 2"/>&nbsp;</a>
 
                         <?php if(empty($session->email))
                         {
                              print_r($session->email);
                             ?>
-                            
-                        
+
+
                          <li class="active"><a href="<?php echo $this->url('auth') ?>"><?php echo $this->translate('SignIn') ?></a></li>
                          <li class="active"><a href="<?php echo $this->url('signup') ?>"><?php echo $this->translate('SignUp') ?></a></li>
-                         
+
                         <?php }else{ ?>
-                        
+
                           <li class="active"><a href="<?php echo $this->url('logout') ?>"><?php echo $this->translate('LogOut') ?></a></li>
                           <li class="active"><a href="<?php echo $this->url('wish') ?>"><?php echo $this->translate('my Wish List') ?></a></li>
                           <li class="active"><a href="<?php echo $this->url('device') ?>"><?php echo $this->translate('Paper') ?></a></li>
                         <?php } ?>
-                                         </ul>
+                    </ul>
+                    <div><p class="logonav">Article to read</p></div>
                 </div><!--/.nav-collapse -->
+
             </div>
         </nav>
         <div class="container">

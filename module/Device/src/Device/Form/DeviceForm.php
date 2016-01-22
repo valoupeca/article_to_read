@@ -24,7 +24,8 @@ namespace Device\Form;
              'name' => 'titre',
              'type' => 'Text',
              'options' => array(
-                 'label' => 'Thème',
+                 'label' => 'Titre',
+
              ),
          ));
          $this->add(array(

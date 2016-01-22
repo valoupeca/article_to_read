@@ -18,11 +18,11 @@ class WishController extends AbstractActionController
 {
     protected $wishTable;
 
-    public function indexAction($id)
+    public function indexAction()
     {
 
         return new ViewModel(array(
-            'wishs' => $this->getWishTable()->fetchById($id),
+            'wishs' => $this->getWishTable()->fetchAll(),
         ));
     }
 

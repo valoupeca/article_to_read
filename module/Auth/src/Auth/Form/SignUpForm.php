@@ -25,12 +25,12 @@ class SignUpForm extends Form
             'attributes' => array(
                 'type' => 'email',
                 'id' => 'email',
-                'class' => 'mdl-textfield__input',
+                'class' => 'email_input',
             ),
             'options' => array(
                 'label' => 'Email',
                 'label_attributes' => array(
-                    'class' => 'mdl-textfield__label',
+                    'class' => 'emaillabel',
                 ),
                 'id' => 'email',
                 'placeholder' => 'example@example.com',
@@ -42,12 +42,12 @@ class SignUpForm extends Form
             'attributes' => array(
                 'type' => 'password',
                 'id' => 'password',
-                'class' => 'mdl-textfield__input',
+                'class' => 'pssw_input',
             ),
             'options' => array(
-                'label' => 'Mot de Passe',
+                'label' => 'Password    ',
                 'label_attributes' => array(
-                    'class' => 'mdl-textfield__label',
+                    'class' => 'password_label',
                 ),
                 'id' => 'password',
                 'placeholder' => '***********',
@@ -88,8 +88,8 @@ class SignUpForm extends Form
             'name' => 'submit',
             'attributes' => array(
                 'type' => 'submit',
-                'value' => 'Submit',
-                'class' => 'mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect',
+                'value' => 'Start reading',
+                'class' => 'btn btn-default btn-xl  ',
             ),
         ));
     }

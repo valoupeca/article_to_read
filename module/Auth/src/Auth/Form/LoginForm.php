@@ -24,12 +24,12 @@ class LoginForm extends Form
             'attributes' => array(
                 'type'  => 'email',
                 'id'    => 'email',
-                'class' => 'mdl-textfield__input',
+                'class' => 'email_input',
             ),
             'options' => array(
                 'label' => 'Email',
                 'label_attributes' => array(
-                    'class' => 'mdl-textfield__label',
+                    'class' => 'emaillabel',
                 ),
                 'id' => 'email',
             )
@@ -40,12 +40,12 @@ class LoginForm extends Form
             'attributes' => array(
                 'type'  => 'password',
                 'id'    => 'password',
-                'class' => 'mdl-textfield__input',
+                'class' => 'pssw_input',
             ),
             'options' => array(
                 'label' => 'Password',
                 'label_attributes' => array(
-                    'class' => 'mdl-textfield__label',
+                    'class' => 'password_label',
                 ),
                 'id' => 'password',
             )
@@ -65,8 +65,8 @@ class LoginForm extends Form
             'name' => 'submit',
             'attributes' => array(
                 'type' => 'submit',
-                'value' => 'Submit',
-                'class' => 'mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect',
+                'value' => 'Keep reading',
+                'class' => 'btn btn-default btn-xl',
             ),
         ));
     }
