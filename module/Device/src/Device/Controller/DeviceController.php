@@ -10,7 +10,8 @@ namespace Device\Controller;
  use Zend\Mvc\Controller\AbstractActionController;
  use Zend\View\Model\ViewModel; 
  use Device\Model\Device;        
- use Device\Form\DeviceForm;     
+ use Device\Form\DeviceForm;
+ use Wish\Form\Wish;
 
  class DeviceController extends AbstractActionController
  {
@@ -93,29 +94,7 @@ namespace Device\Controller;
      }
      }
 
-     public function addWishAction()
-     {
-         $form = new DeviceForm();
-         $form->get('submit')->setValue('AddWish');
 
-         $request = $this->getRequest();
-         if ($request->isPost()) {
-             $wish = new Device();
-             $form->setInputFilter($wish->getInputFilter());
-             $form->setData($request->getPost());
-
-             if ($form->isValid()) {
-                 $wish->exchangeArray($form->getData());
-                 $this->getDeviceTable()->saveWish($wish);
-
-                 // Redirect to list of devices
-                 return $this->redirect()->toRoute('wish');
-             }
-         }
-         return array('form' => $form);
-
-
-     }
 
      public function deleteAction()
       {
@@ -150,5 +129,54 @@ namespace Device\Controller;
          }
          return $this->deviceTable;
      }
+
+     public function getWishTable()
+     {
+         if (!$this->wishTable) {
+             $sm = $this->getServiceLocator();
+             $this->wishTable = $sm->get('Wish\Model\WishTable');
+         }
+         return $this->wishTable;
+     }
+
+ public function selectedAction()
+ {
+
+
+     $id = (int)$this->params()->fromRoute('id', 0);
+     try {
+         $device = $this->getDeviceTable()->getDevice($id);
+     } catch (\Exception $ex) {
+         return $this->redirect()->toRoute('device', array(
+             'action' => 'index'
+         ));
+     }
+
+     $form = new DeviceForm();
+
+     $form->bind($device);
+     $form->get('submit')->setAttribute('value', 'Add Wish');
+
+     $request = $this->getRequest();
+     if ($request->isPost()) {
+         $form->setInputFilter($device->getInputFilter());
+         $form->setData($request->getPost());
+
+         if ($form->isValid()) {
+             $this->getWishTable()->saveWish($device);
+
+             // Redirect to list of device
+             return $this->redirect()->toRoute('wish');
+         }
+     }
+
+     return array(
+         'id' => $id,
+         'form' => $form,
+     );
+
+ }
+
+
  }
 

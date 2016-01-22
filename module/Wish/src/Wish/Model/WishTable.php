@@ -43,12 +43,12 @@ class WishTable
         $this->tableGateway->delete(array('id' => (int) $id));
     }
 
-    public function saveWish(Device $device,$iduser)
+    public function saveWish(Device $device)
     {
         $data = array(
+            'user_id' => $device->user_id,
             'titre' => $device->titre,
             'lien' => $device->lien,
-            'user_id' => $iduser,
 
         );
 
@@ -63,4 +63,5 @@ class WishTable
             }
         }
     }
+
 }

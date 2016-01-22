@@ -27,10 +27,9 @@ class WishController extends AbstractActionController
     }
 
 
-
     public function deleteAction()
     {
-        $id = (int) $this->params()->fromRoute('id', 0);
+        $id = (int)$this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('wish');
         }
@@ -40,7 +39,7 @@ class WishController extends AbstractActionController
             $del = $request->getPost('del', 'No');
 
             if ($del == 'Yes') {
-                $id = (int) $request->getPost('id');
+                $id = (int)$request->getPost('id');
                 $this->getWishTable()->deleteWish($id);
             }
 
@@ -49,10 +48,11 @@ class WishController extends AbstractActionController
         }
 
         return array(
-            'id'    => $id,
+            'id' => $id,
             'wish' => $this->getWishTable()->getWish($id)
         );
     }
+
     public function getWishTable()
     {
         if (!$this->wishTable) {
@@ -60,29 +60,6 @@ class WishController extends AbstractActionController
             $this->wishTable = $sm->get('Wish\Model\WishTable');
         }
         return $this->wishTable;
-    }
-    public function addWishAction()
-    {
-        $form = new WishForm();
-        $form->get('submit')->setValue('Add');
-
-        $request = $this->getRequest();
-        if ($request->isPost()) {
-            $wish = new Device();
-            $form->setInputFilter($wish->getInputFilter());
-            $form->setData($request->getPost());
-
-            if ($form->isValid()) {
-                $wish->exchangeArray($form->getData());
-                $this->getDeviceTable()->saveWish($wish);
-
-                // Redirect to list of devices
-                return $this->redirect()->toRoute('wish');
-            }
-        }
-        return array('form' => $form);
-
-
     }
 
     public function saveWish(Wish $wish)
@@ -94,7 +71,7 @@ class WishController extends AbstractActionController
 
         );
 
-        $id = (int) $wish->id;
+        $id = (int)$wish->id;
         if ($id == 0) {
             $this->tableGateway->insert($data);
         } else {
@@ -106,6 +83,4 @@ class WishController extends AbstractActionController
         }
     }
 
-
 }
-

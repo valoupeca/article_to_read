@@ -3,23 +3,22 @@
  * Created by PhpStorm.
  * User: lamur
  * Date: 21/01/2016
- * Time: 21:38
+ * Time: 22:53
  */
 
 use Zend\Session\Container;
 
 $session = new Container('User');
 
-$title = 'Add to your collection';
+$title = 'Add a paper for your collection';
 $this->headTitle($title);
 ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
 <?php
-$form = $this->form;
 $form->setAttribute('action', $this->url(
     'device',
     array(
-        'action' => 'addWish',
+        'action' => 'selected',
         'id'     => $this->id,
     )
 ));
@@ -29,6 +28,6 @@ echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('id'));
 echo $this->formRow($form->get('titre'));
 echo $this->formRow($form->get('lien'));
-echo $this->formHidden($session->getPost('user_id'));
+echo $this->formRow($form->get('user_id'));
 echo $this->formSubmit($form->get('submit'));
 echo $this->form()->closeTag();

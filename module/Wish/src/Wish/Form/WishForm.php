@@ -23,10 +23,8 @@ class WishForm extends Form
         ));
         $this->add(array(
             'name' => 'user_id',
-            'type' => 'Text',
-            'options' => array(
-                'label' => 'Vous (id)',
-            ),
+            'type' => 'Hidden',
+
         ));
         $this->add(array(
             'name' => 'titre',

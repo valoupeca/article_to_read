@@ -48,7 +48,13 @@ namespace Device\Form;
                  'label' => 'Nom du Journal',
              ),
          ));
-
+         $this->add(array(
+             'name' => 'user_id',
+             'type' => 'Text',
+             'options' => array(
+                 'label' => 'Votre id',
+             ),
+         ));
          $this->add(array(
              'name' => 'submit',
              'type' => 'Submit',
